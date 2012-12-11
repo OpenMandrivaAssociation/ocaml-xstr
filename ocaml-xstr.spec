@@ -1,13 +1,13 @@
 Name:           ocaml-xstr
 Version:        0.2.1
-Release:        %mkrel 1
+Release:        2
 Summary:        Thread-safe implementation of string searching/matching/splitting
 License:        MIT/X11
 Group:          Development/Other
 URL:            http://projects.camlcity.org/projects/xstr.html
 Source0:        http://download.camlcity.org/download/xstr-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}
 BuildRequires:  ocaml-findlib
+BuildRequires:  ocaml
 
 %description
 This package implements frequent string operations: searching, replacing,
@@ -34,16 +34,12 @@ developing applications that use %{name}.
 make all opt
 
 %install
-rm -rf %{buildroot}
 export DESTDIR=%{buildroot}
 export OCAMLFIND_DESTDIR=%{buildroot}/%{_libdir}/ocaml
 export DLLDIR=$OCAMLFIND_DESTDIR/stublibs
 mkdir -p $OCAMLFIND_DESTDIR/stublibs
 mkdir -p $OCAMLFIND_DESTDIR/xstr
 make install
-
-%clean
-rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
@@ -58,4 +54,11 @@ rm -rf %{buildroot}
 %{_libdir}/ocaml/xstr/*.a
 %{_libdir}/ocaml/xstr/*.cmxa
 %{_libdir}/ocaml/xstr/*.mli
+
+
+
+%changelog
+* Sun Sep 13 2009 Florent Monnier <blue_prawn@mandriva.org> 0.2.1-1mdv2010.0
++ Revision: 438749
+- import ocaml-xstr
 
