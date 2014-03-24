@@ -1,13 +1,16 @@
-Name:           ocaml-xstr
-Version:        0.2.1
-Release:        2
-Summary:        Thread-safe implementation of string searching/matching/splitting
-License:        MIT/X11
-Group:          Development/Other
-URL:            http://projects.camlcity.org/projects/xstr.html
-Source0:        http://download.camlcity.org/download/xstr-%{version}.tar.gz
-BuildRequires:  ocaml-findlib
-BuildRequires:  ocaml
+%define _enable_debug_packages %{nil}
+%define debug_package %{nil}
+
+Summary:	Thread-safe implementation of string searching/matching/splitting
+Name:		ocaml-xstr
+Version:	0.2.1
+Release:	3
+License:	MIT/X11
+Group:		Development/Other
+Url:		http://projects.camlcity.org/projects/xstr.html
+Source0:	http://download.camlcity.org/download/xstr-%{version}.tar.gz
+BuildRequires:	ocaml
+BuildRequires:	ocaml-findlib
 
 %description
 This package implements frequent string operations: searching, replacing,
@@ -18,14 +21,30 @@ Some operations of xstr are performed as quickly as by Str; if the string
 to be processed is small, xstr is often faster than Str; if the string is
 big, xstr is upto half as fast than Str.
 
-%package        devel
-Summary:        Development files for %{name}
-Group:          Development/Other
-Requires:       %{name} = %{version}-%{release}
+%files
+%doc LICENSE README
+%dir %{_libdir}/ocaml/xstr
+%{_libdir}/ocaml/xstr/META
+%{_libdir}/ocaml/xstr/*.cma
+%{_libdir}/ocaml/xstr/*.cmi
 
-%description    devel
+#----------------------------------------------------------------------------
+
+%package devel
+Summary:	Development files for %{name}
+Group:		Development/Other
+Requires:	%{name} = %{EVRD}
+
+%description devel
 The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
+
+%files devel
+%{_libdir}/ocaml/xstr/*.a
+%{_libdir}/ocaml/xstr/*.cmxa
+%{_libdir}/ocaml/xstr/*.mli
+
+#----------------------------------------------------------------------------
 
 %prep
 %setup -q -n xstr
@@ -40,25 +59,4 @@ export DLLDIR=$OCAMLFIND_DESTDIR/stublibs
 mkdir -p $OCAMLFIND_DESTDIR/stublibs
 mkdir -p $OCAMLFIND_DESTDIR/xstr
 make install
-
-%files
-%defattr(-,root,root)
-%doc LICENSE README
-%dir %{_libdir}/ocaml/xstr
-%{_libdir}/ocaml/xstr/META
-%{_libdir}/ocaml/xstr/*.cma
-%{_libdir}/ocaml/xstr/*.cmi
-
-%files devel
-%defattr(-,root,root)
-%{_libdir}/ocaml/xstr/*.a
-%{_libdir}/ocaml/xstr/*.cmxa
-%{_libdir}/ocaml/xstr/*.mli
-
-
-
-%changelog
-* Sun Sep 13 2009 Florent Monnier <blue_prawn@mandriva.org> 0.2.1-1mdv2010.0
-+ Revision: 438749
-- import ocaml-xstr
 
