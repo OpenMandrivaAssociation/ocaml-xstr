@@ -4,7 +4,7 @@
 Summary:	Thread-safe implementation of string searching/matching/splitting
 Name:		ocaml-xstr
 Version:	0.2.1
-Release:	3
+Release:	4
 License:	MIT/X11
 Group:		Development/Other
 Url:		http://projects.camlcity.org/projects/xstr.html
