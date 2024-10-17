@@ -7,7 +7,7 @@ Version:	0.2.1
 Release:	4
 License:	MIT/X11
 Group:		Development/Other
-Url:		http://projects.camlcity.org/projects/xstr.html
+Url:		https://projects.camlcity.org/projects/xstr.html
 Source0:	http://download.camlcity.org/download/xstr-%{version}.tar.gz
 BuildRequires:	ocaml
 BuildRequires:	ocaml-findlib
