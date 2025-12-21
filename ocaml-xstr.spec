@@ -9,6 +9,7 @@ License:	MIT/X11
 Group:		Development/Other
 Url:		https://projects.camlcity.org/projects/xstr.html
 Source0:	http://download.camlcity.org/download/xstr-%{version}.tar.gz
+BuildRequires:	make
 BuildRequires:	ocaml
 BuildRequires:	ocaml-findlib
 
